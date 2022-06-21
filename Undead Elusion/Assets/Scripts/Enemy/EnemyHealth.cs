@@ -22,7 +22,6 @@ public class EnemyHealth : MonoBehaviour {
     public void TakeDamage(float damage) {
         currentHitPoints -= damage;
         BroadcastMessage("OnDamageTaken");
-        Debug.Log(currentHitPoints);
 
         if (currentHitPoints <= 0) {
             Die();

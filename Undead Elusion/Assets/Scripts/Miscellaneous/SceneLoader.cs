@@ -12,6 +12,20 @@ public class SceneLoader : MonoBehaviour {
         Application.targetFrameRate = targetFramerate;
     }
 
+    public void LoadFirstLevel() {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Level 1");
+    }
+
+    public void LoadCreditsScreen() {
+        SceneManager.LoadScene("Credits Screen");
+    }
+
+    public void LoadStartScreen() {
+        //Time.timeScale = 1;
+        SceneManager.LoadScene("Start Screen");
+    }
+
     public void ReloadLevel() {
         Time.timeScale = 1;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;

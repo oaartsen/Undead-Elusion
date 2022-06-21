@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Start Screen.unity
+    guid: c2af61a6ab714cf4383923e5c12f53a4
+  - enabled: 1
+    path: Assets/Scenes/Credits Screen.unity
+    guid: d2dc46d32760ac447966c256c452a24f
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: a2a18ecbc7a4f1c429ab842cf6cad4f3
+  - enabled: 1
+    path: Assets/Scenes/Win Screen.unity
+    guid: d0db8e1fe0e5906489969b0d98fd6eac
+  - enabled: 0
     path: Assets/Scenes/Sandbox.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
