@@ -506,9 +506,9 @@ RectTransform:
   m_Father: {fileID: 1875710514}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -578.84}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 960, y: -38.840027}
   m_SizeDelta: {x: 1415.7974, y: 815.1214}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1692956598
@@ -533,46 +533,74 @@ MonoBehaviour:
       m_Calls: []
   m_text: '3D Models:
 
-    Delthor Games (on Unity Asset Store) - AKM (Weapon) &
-    MP7 (Weapon)
+    Aleksn09 (on Unity Asset Store) - Stop Signs
 
-    DNK_DEV (on Unity Asset Store) - Brick Fence
+    Delthor
+    Games (on Unity Asset Store) - AKM (Weapon) & MP7 (Weapon)
 
-    Evgeny
-    Korchuganov (on Unity Asset Store) - Ammo Bullets
+    DNK_DEV (on Unity
+    Asset Store) - Brick Fence
 
-    Himmelfar (on Unity Asset
-    Store) - Ammo Box
+    Evgeny Korchuganov (on Unity Asset Store) - Ammo
+    Bullets
 
-    Mehdi Rabiee (on Unity Asset Store) - Houses
+    Himmelfar (on Unity Asset Store) - Ammo Box
 
-    Perfect
-    Games (on Unity Asset Store) - 1911 (Weapon)
+    Mehdi Rabiee (on
+    Unity Asset Store) - Houses
 
-    Pxltiger (on Unity Asset Store)
-    - Zombie (+ Animation)
+    Perfect Games (on Unity Asset Store) - 1911
+    (Weapon)
 
-    reach the enD (on Unity Asset Store) - Tombstones
+    Pxltiger (on Unity Asset Store) - Zombie (+ Animation)
 
-    SunCube
-    (on Unity Asset Store) - Helicopter
+    reach
+    the enD (on Unity Asset Store) - Tombstones
 
-    
+    SunCube (on Unity Asset Store)
+    - Helicopter
+
+
 
     Audio:
 
-    Idia Software LLC
-    (on Unity Asset Store) - Zombie SFX
+    GWriterStudio (on Unity Asset Store) - Background
+    Music
 
-    
+    Idia Software LLC (on Unity Asset Store) - Zombie SFX
+
+    Into The
+    Void Sound Design (on Unity Asset Store) - MP7 Shooting SFX & 1911 Switch SFX
+    & MP7 Switch SFX
+
+    iwanPlays (on Unity Asset Store) - Player Hurt SFX
+
+    Joseph
+    SARDIN (on BigSoundBank.com) - Boss Drum Sounds
+
+    Komposite Sound (on Unity
+    Asset Store) - 1911 Shooting SFX & AKM Switch SFX
+
+    MGWSoundDesign (on Unity
+    Asset Store) - Player Footsteps SFX
+
+    Sound Earth Game Audio (on Unity Asset
+    Store) - AKM Shooting SFX
+
+
 
     Miscellaneous:
 
-    Unity Technologies
-    (on Unity Asset Store) - Standard Assets & Terrain Textures
+    Avionx (on Unity Asset Store)
+    - Skybox
 
-    Goma Shin (on
-    Dafont.com) - Zombie Shooting Font
+    Darsycho (on OpenGameArt.org) - Beating Heart UI (+Animation)
+
+    Goma
+    Shin (on Dafont.com) - Zombie Shooting Font
+
+    Unity Technologies (on Unity
+    Asset Store) - Standard Assets & Terrain Textures
 
 '
   m_isRightToLeft: 0
@@ -601,8 +629,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

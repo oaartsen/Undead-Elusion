@@ -26,6 +26,10 @@ public class SceneLoader : MonoBehaviour {
         SceneManager.LoadScene("Start Screen");
     }
 
+    public void LoadTutorialScreen() {
+        SceneManager.LoadScene("Tutorial Screen");
+    }
+
     public void ReloadLevel() {
         Time.timeScale = 1;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;

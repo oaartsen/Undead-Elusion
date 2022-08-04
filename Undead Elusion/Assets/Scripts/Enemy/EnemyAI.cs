@@ -8,48 +8,62 @@ public class EnemyAI : MonoBehaviour {
 
     // Configuration parameters
     [SerializeField] Transform target;
-    [SerializeField] float chaseRange = 12f;
     [SerializeField] float provokeRange = 8f;
     [SerializeField] float turnSpeed = 5f;
+    [SerializeField] float stoppingDistanceBuffer = 0.5f;
 
     // State variables
     float distanceToTarget = Mathf.Infinity;
     bool isProvoked = false;
     bool isProvokedByDamage = false;
+    string currenAnimationState = "idle";
 
     // Cached references
     NavMeshAgent myNavMeshAgent;
     Animator myAnimator;
     EnemyHealth myEnemyHealth;
-
+    EnemySFX myEnemySFX;
+    BossAudio myBossAudio;
+    CapsuleCollider myCapsuleCollider;
 
     // Start is called before the first frame update
     void Start() {
         myNavMeshAgent = GetComponent<NavMeshAgent>();
         myAnimator = GetComponent<Animator>();
         myEnemyHealth = GetComponent<EnemyHealth>();
+        if (GetComponent<EnemySFX>() != null) {
+            myEnemySFX = GetComponent<EnemySFX>();
+        }
+        else if (GetComponent<BossAudio>() != null) {
+            myBossAudio = GetComponent<BossAudio>();
+        }
+        myCapsuleCollider = GetComponent<CapsuleCollider>();
+        myAnimator.SetTrigger("startIdle");
     }
 
     // Update is called once per frame
     void Update() {
 
         if (myEnemyHealth.IsDead()) {
-            enabled = false;
+            if (GetComponent<EnemySFX>() != null) {
+                myEnemySFX.SetCurrentAnimationState("death");
+            }
+            else if (GetComponent<BossAudio>() != null) {
+                myBossAudio.SetCurrentAnimationStateBoss("death");
+            }
+            currenAnimationState = "death";
             myNavMeshAgent.enabled = false;
+            myCapsuleCollider.enabled = false;
+            enabled = false;
+            return;
         }
 
         distanceToTarget = Vector3.Distance(target.position, transform.position);
         HandleProvoked();
 
         if (isProvoked || isProvokedByDamage) {
-            isProvoked = true;
-            isProvokedByDamage = false;
             EngageTarget();
         }
-        else if (myNavMeshAgent.remainingDistance < myNavMeshAgent.stoppingDistance) {
-            myAnimator.SetTrigger("startIdle");
-        }
-
     }
 
     public void OnDamageTaken() {
@@ -57,11 +71,7 @@ public class EnemyAI : MonoBehaviour {
     }
 
     void HandleProvoked() {
-        if (distanceToTarget > chaseRange) {
-            isProvoked = false;
-        }
-
-        else if (distanceToTarget <= provokeRange) {
+        if (distanceToTarget <= provokeRange && !isProvoked) {
             isProvoked = true;
         }
     }
@@ -69,7 +79,7 @@ public class EnemyAI : MonoBehaviour {
     void EngageTarget() {
         FaceTarget();
 
-        if (distanceToTarget > myNavMeshAgent.stoppingDistance) {
+        if (distanceToTarget > myNavMeshAgent.stoppingDistance + stoppingDistanceBuffer) {
             ChaseTarget();
         }
 
@@ -79,12 +89,14 @@ public class EnemyAI : MonoBehaviour {
     }
 
     void ChaseTarget() {
+        currenAnimationState = "chasing";
         myAnimator.SetBool("isAttacking", false);
         myAnimator.SetTrigger("startRunning");
         myNavMeshAgent.SetDestination(target.position);
     }
 
     void AttackTarget() {
+        currenAnimationState = "attacking";
         myAnimator.SetBool("isAttacking", true);
     }
 
@@ -95,10 +107,23 @@ public class EnemyAI : MonoBehaviour {
     }
 
 
+    public string GetAnimationState() {
+        return currenAnimationState;
+    }
+
+    public float GetDistanceToTarget() {
+        return distanceToTarget;
+    }
+
+    public Transform GetTargetTransform() {
+        return target;
+    }
+
+
+
     private void OnDrawGizmosSelected() {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, chaseRange);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, provokeRange);
     }
+
 }

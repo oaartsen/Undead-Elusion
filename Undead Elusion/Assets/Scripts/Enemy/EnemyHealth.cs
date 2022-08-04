@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour {
     // Cached references
     Animator myAnimator = null;
 
+    // Start is called before the first frame update
     private void Start() {
         currentHitPoints = maxHitPoints;
         myAnimator = GetComponent<Animator>();
@@ -25,7 +26,6 @@ public class EnemyHealth : MonoBehaviour {
 
         if (currentHitPoints <= 0) {
             Die();
-            //Destroy(gameObject);
         }
     }
 
@@ -38,5 +38,7 @@ public class EnemyHealth : MonoBehaviour {
     public bool IsDead() {
         return isDead;
     }
+
+    
 
 }

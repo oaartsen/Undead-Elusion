@@ -34,7 +34,6 @@ public class EnemyAttack : MonoBehaviour {
         distanceToTargetPlayer = Vector3.Distance(targetPlayerTransform.position, transform.position);
 
         if (distanceToTargetPlayer < attackRange) {
-            Debug.Log("Zombie Attack");
             targetPlayerHealth.DamagePlayer(attackDamage);
         }
 

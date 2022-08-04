@@ -7,6 +7,8 @@ public class AmmoPickup : MonoBehaviour {
     // Configuration parameters
     [SerializeField] int ammoAmount = 5;
     [SerializeField] AmmoType ammoType;
+    [SerializeField] AudioClip pickupSFX;
+    [SerializeField] [Range (0, 1)] float pickupSFXVolume = 1f;
 
     // State variables
     bool playerIsTouchingPickup = false;
@@ -27,7 +29,7 @@ public class AmmoPickup : MonoBehaviour {
     private void HandlePickupInput() {
         if (playerIsTouchingPickup && Input.GetKeyDown(KeyCode.E) && playerAmmo != null) {
             playerAmmo.IncreaseCurrentAmmoAmount(ammoType, ammoAmount);
-            Debug.Log("Player has picked up box");
+            AudioSource.PlayClipAtPoint(pickupSFX, transform.position, pickupSFXVolume);
             Destroy(gameObject);
         }
     }

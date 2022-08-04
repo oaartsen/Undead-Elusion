@@ -5,15 +5,19 @@ using UnityEngine;
 public class WeaponSwitcher : MonoBehaviour {
 
     // Configuration parameters
+    [SerializeField] AudioClip[] weaponSwitchingSFX;
+    [SerializeField] [Range (0, 1)] float[] weaponSwitchingSFXVolume;
 
     // State variables
-    [SerializeField] int currentWeapon = 0;
+    int currentWeapon = 0;
     bool canSwitch = true;
 
     // Cached references
+    AudioSource myAudioSource;
 
     // Start is called before the first frame update
     void Start() {
+        myAudioSource = GetComponent<AudioSource>();
         SetWeaponActive();
     }
 
@@ -28,6 +32,7 @@ public class WeaponSwitcher : MonoBehaviour {
 
         if (previousWeapon != currentWeapon) {
             SetWeaponActive();
+            HandleSwitchingWeaponsSFX();
         }
     }
 
@@ -72,6 +77,13 @@ public class WeaponSwitcher : MonoBehaviour {
             }
 
             weaponIndex++;
+        }
+    }
+
+    void HandleSwitchingWeaponsSFX() {
+        if (weaponSwitchingSFX[currentWeapon] != null) {
+            myAudioSource.Stop();
+            myAudioSource.PlayOneShot(weaponSwitchingSFX[currentWeapon], weaponSwitchingSFXVolume[currentWeapon]);
         }
     }
 
